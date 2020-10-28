@@ -1,0 +1,4 @@
+SpeechRecognition
+requests
+python-dotenv
+PyAudio
