@@ -1,6 +1,6 @@
 .env
 *.wav
-
+julius-4.4.2
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
