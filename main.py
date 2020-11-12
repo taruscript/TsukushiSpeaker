@@ -4,11 +4,21 @@ import socket
 import line_notice
 import voice
 from time import sleep
-
+import psutil
 
 
 host = "localhost"
 port = 10500
+
+
+#　juliusのプロセスが存在するかチェック。
+def exist_check_julius():
+    process_name = "julius"
+
+    for proc in psutil.process_iter():
+        # プロセスチェックをしてあったらkillをする
+        if proc.name() == process_name:
+            proc.terminate()
 
 
 def start_process():    
@@ -62,4 +72,5 @@ def wait_for_OK():
 
 
 if __name__ == "__main__":
+    exist_check_julius()
     wait_for_OK()
