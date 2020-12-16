@@ -49,6 +49,29 @@ def get_picture():
     except:
         return "Command envailed."
 
+def store_image(name):
+    filename = "{}-{}-{}.jpg".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
+    shutil.copyfile("image.jpg", "./images/{}".format(filename))
+    #print(filename)
+
+def search_image(name):
+    filelist = sorted(glob.glob("./images/*{}.jpg".format(name)))
+    X = 255
+    Y = 255
+    print(filelist[-1])
+    root = tk.Tk()
+    root.title("TsukushiSpeaker")
+    root.minsize(X, Y)
+    image = tk.PhotoImage(file=filelist[-1])
+    canvas = tk.Canvas(bg="white", width=X, height=Y)
+    canvas.place(x=0, y=0)
+    canvas.create_image(0, 0, image=image, anchor=tk.NW)
+    root.mainloop()
+
+def delete_images():
+    shutil.rmtree("./images/")
+    os.mkdir("./images/")
+
 def wait_for_OK():
     try:
         client = start_process()
@@ -65,6 +88,9 @@ def wait_for_OK():
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
                 print("認識結果: " + recog_text)
+                store_image(recog_text)
+                #search_image("検索するファイル名")
+                #delete_images()
                 # wake word
                 if "ＯＫ" in recog_text:
                     print("exec")

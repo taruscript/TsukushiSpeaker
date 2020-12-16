@@ -2,3 +2,9 @@ SpeechRecognition
 requests
 python-dotenv
 PyAudio
+os
+time
+glob
+shutil
+datetime
+tkinter
