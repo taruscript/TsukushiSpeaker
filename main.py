@@ -41,6 +41,13 @@ def speech2Line():
     voice_result = voice_class.voice_recognize()
     line_notice.send(voice_result)
 
+def get_picture():
+    cheese=['fswebcam','-D','1','image.jpg']
+    try:
+        subprocess.check_call(cheese)
+        print ("Command finished.")
+    except:
+        return "Command envailed."
 
 def wait_for_OK():
     try:
@@ -62,6 +69,7 @@ def wait_for_OK():
                 if "ＯＫ" in recog_text:
                     print("exec")
                     speech2Line()
+                    get_picture()
 
                 data = ""
             else:
