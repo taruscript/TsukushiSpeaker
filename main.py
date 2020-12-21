@@ -9,11 +9,8 @@ import time
 import datetime
 import shutil
 import glob
-<<<<<<< Updated upstream
 
-=======
 from time import sleep
->>>>>>> Stashed changes
 
 host = "localhost"
 port = 10500
