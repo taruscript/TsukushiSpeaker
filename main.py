@@ -9,7 +9,6 @@ import time
 import datetime
 import shutil
 import glob
-
 from time import sleep
 
 host = "localhost"
@@ -33,6 +32,14 @@ def start_process():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((host, port))
     return client
+
+def recognize_word():
+    recognize=['julius', '-C', './dictation-kit-v4.3.1-linux/am-gmm.jconf','-nostrip','-gram','./dict/greeting','-input', 'mic']
+    try:
+        subprocess.check_call(recognize)
+        print ("Com fin.")
+    except:
+        return "Com envailed."
 
 
 def end_process(client):
@@ -95,14 +102,16 @@ def wait_for_OK():
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
                 print("認識結果: " + recog_text)
-                get_picture()
+               # get_picture()
                 store_image(recog_text)
                 #search_image("検索する物体名")
                 #clean_images()
                 # wake word
-                if "机" in recog_text:
+                if "猫" in recog_text:
                     print("exec")
-                    speech2Line()
+                   # speech2Line()
+                    recognize_word()
+                    get_picture()
 
                 data = ""
             else:
