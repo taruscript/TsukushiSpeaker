@@ -9,7 +9,11 @@ import time
 import datetime
 import shutil
 import glob
+<<<<<<< Updated upstream
 
+=======
+from time import sleep
+>>>>>>> Stashed changes
 
 host = "localhost"
 port = 10500
@@ -99,7 +103,7 @@ def wait_for_OK():
                 #search_image("検索する物体名")
                 #clean_images()
                 # wake word
-                if "ＯＫ" in recog_text:
+                if "机" in recog_text:
                     print("exec")
                     speech2Line()
 
