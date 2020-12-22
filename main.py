@@ -102,7 +102,7 @@ def wait_for_OK():
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
                 print("認識結果: " + recog_text)
-               # get_picture()
+               get_picture()
                 store_image(recog_text)
                 #search_image("検索する物体名")
                 #clean_images()
@@ -111,7 +111,7 @@ def wait_for_OK():
                     print("exec")
                    # speech2Line()
                     recognize_word()
-                    get_picture()
+                    
 
                 data = ""
             else:
