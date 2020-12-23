@@ -9,7 +9,6 @@ import time
 import datetime
 import shutil
 import glob
-
 from time import sleep
 
 host = "localhost"
