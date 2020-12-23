@@ -94,7 +94,6 @@ def wait_for_OK():
         while True:
             if '</RECOGOUT>\n.' in data:
 
-
                 recog_text = ""
                 for line in data.split('\n'):
                     index = line.find('WORD="')
@@ -102,8 +101,9 @@ def wait_for_OK():
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
                 print("認識結果: " + recog_text)
-                get_picture()
-                store_image(recog_text)
+                if not "猫" == recog_text:
+                    get_picture()
+                    store_image(recog_text)
                 #search_image("検索する物体名")
                 #clean_images()
                 # wake word
