@@ -53,21 +53,14 @@ def speech2Line():
     voice_result = voice_class.voice_recognize()
     line_notice.send(voice_result)
 
-def get_picture():
-    cheese=['fswebcam','-D','1','image.jpg']
-    try:
-        subprocess.check_call(cheese)
-        print ("Command finished.")
-    except:
-        return "Command envailed."
-
 store_dir_name = "images"
 
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
         file_name = "{}-{}-{}.jpg".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
-        shutil.copyfile("image.jpg", "{}/{}".format(store_dir_name, file_name))
+        cheese=['fswebcam','-D','1',"{}/{}.jpg".format(store_dir_name, file_name)]
+        subprocess.check_call(cheese)#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         return True
     except:
         return False
@@ -101,8 +94,7 @@ def wait_for_OK():
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
                 print("認識結果: " + recog_text)
-                if not "猫" == recog_text:
-                    get_picture()
+                #if not "猫" == recog_text:
                     store_image(recog_text)
                 #search_image("検索する物体名")
                 #clean_images()
