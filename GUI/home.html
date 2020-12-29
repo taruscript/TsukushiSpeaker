@@ -3,14 +3,27 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <script type="text/javascript" src="/eel.js"></script>
     </head>
     <body>
         <h1>TsukushiSpeaker</h1>
-        <form>
-            <input type="text"></input>
+        <form id="form">
+            <input type="text" name="word"></input>
             <button type="submit">検索</button>
         </form>
         <button>ログを見る</button>
+        <div id="result"></div>
         <button>設定</button>
+        <script type="text/javascript">
+            const form = document.getElementById("form");
+            const resultdiv = document.getElementById("result");
+            async function search_image(e){
+                e.preventDefault();
+                const word = form.word.value;
+                const result = await eel.search_image(word)();
+                resultdiv.append(result);
+            }
+            form.addEventListener("submit", search_image);
+        </script>
     </body>
 </html>
