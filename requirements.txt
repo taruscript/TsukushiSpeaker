@@ -1,3 +1,4 @@
+eel
 SpeechRecognition
 requests
 python-dotenv
