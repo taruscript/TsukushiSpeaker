@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import subprocess
+from subprocess import Popen
 import socket
 import line_notice
 import voice
@@ -47,21 +48,14 @@ def end_process(client):
     client.send("DIE".encode('utf-8'))
     client.close()
 
-def speech2Line():
-    voice_class = voice.voiceFunctionsClass()
-    voice_class.voice_recode()
-    voice_result = voice_class.voice_recognize()
-    line_notice.send(voice_result)
-
 store_dir_name = "images"
-
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
         file_name = "{}-{}-{}.jpg".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
-        file_name = file_name.replace("[s]", "").replace("[/s]", "")
-        cheese=['fswebcam','-D','1',"./{}/{}".format(store_dir_name, file_name)]
-        subprocess.check_call(cheese)
+        file_name = file_name.replace("[s]","").replace("[/s]","")
+        cheese=['fswebcam','-F','80',"{}/{}.jpg".format(store_dir_name, file_name)]
+        subprocess.check_call(cheese)#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         return True
     except:
         return False
@@ -85,33 +79,42 @@ def wait_for_OK():
         client = start_process()
 
         data = ""
+       
         while True:
             if '</RECOGOUT>\n.' in data:
-
+                
                 recog_text = ""
+                recog = ""
                 for line in data.split('\n'):
                     index = line.find('WORD="')
+                    
                     if index != -1:
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
+                        
+
                 print("認識結果: " + recog_text)
                 #if not "猫" == recog_text:
-                store_image(recog_text)
+               
+               # store_image(recog_text)
                 #search_image("検索する物体名")
-                #clean_images()
+               # clean_images()
                 # wake word
-                if "猫" in recog_text:
+                if "らずぱい" in recog_text:
                     print("exec")
-                   # speech2Line()
-                    recognize_word()
-                    
+                    sleep(2)
+                    #print(recog) 
+                    store_image(recog_text)
+                                   
 
                 data = ""
+                
+               # store_image(recog_text)
             else:
                 data += str(client.recv(1024).decode('utf-8'))
                 print('NotFound')
     except KeyboardInterrupt:
-        end_process(client)
+       end_process(client)
 
 
 if __name__ == "__main__":
