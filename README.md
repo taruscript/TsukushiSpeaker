@@ -12,8 +12,8 @@
 2. 仕組み
 3. 準備する物
 4. インストール方法
-・Raspberry Pi
-・Ubuntu(これから対応予定)
+・Ubuntu
+・Raspberry Pi(これから対応予定)
 5. トラブルシューティング
 6. 連絡先
 
@@ -40,8 +40,8 @@ TsukushiSpeakerはそのようななくしものをなくし、日常で慌て�
 ![](https://i.imgur.com/fZJIyFg.jpg)
 
 
-(注)2020年12月29日現在
-wake wordとして「猫(ねこ)」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前も保存されます。現時点ではwake wordを言う時点でも写真が撮られてしまうので、合計2枚の写真が保存されます。
+(注)2020年12月31日現在
+wake wordとして「ラズパイ(らずぱい)」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前も保存されます。現時点ではwake wordを言う時点でも写真が撮られてしまうので、合計2枚の写真が保存されます。
 
 ## 2. 仕組み(2020_12_29時点)
 <!-- もっと技術説明を深くした方が良いかな... -->
@@ -50,7 +50,7 @@ wake wordとして「猫(ねこ)」と物の名前を言う前に言い、起動
 > 単語と写真をリンクして保存し、あとから確認できるようにします。
 
 `python3 main.py`
-と実行コマンド入力後、wake wordである「猫(ねこ)」と話しかけます。
+と実行コマンド入力後、wake wordである「ラズパイ(らずぱい)」と話しかけます。
 ![](https://i.imgur.com/uJvn5HA.jpg)
 
 その後、記憶させたい物の名前を話しかけます。
@@ -78,20 +78,20 @@ wake wordとして「猫(ねこ)」と物の名前を言う前に言い、起動
 そしてフィードバックお待ちしてます！！
 ご質問やフィードバックはTwitter @taarusauce または @labo_4423 までお願いします。
 
-### ・Raspberry Pi
+### ・Ubuntu20.10
 ・下記のコマンドを実行します。
-`sudo apt update`
-`sudo apt upgrade`
-`sudo apt install vim` または `sudo apt install emacs`
-`sudo apt install julius`
-`sudo apt install git`
-`git clone https://github.com/taruscript/TsukushiSpeaker`
-`cd TsukushiSpeaker`
-`sudo apt install python3-pip3`
-`sudo apt install python3-pyaudio`
-`pip3 install -r requirements.txt`
-`pip install numpy`
-`sudo spt install flac`
+`sudo apt update`  
+`sudo apt upgrade`  
+`sudo apt install vim` または `sudo apt install emacs`  
+`sudo apt install julius`  
+`sudo apt install git`  
+`git clone https://github.com/taruscript/TsukushiSpeaker`  
+`cd TsukushiSpeaker`  
+`sudo apt install python3-pip3`  
+`sudo apt install python3-pyaudio`  
+`pip3 install -r requirements.txt`  
+`pip install numpy`  
+`sudo spt install flac`  
 
 <!-- 下記のセットアップしたものをこのディレクトリに配置する。
 https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
@@ -103,7 +103,7 @@ https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 `python3 main.py`
 
 
-### ・Ubuntu
+### ・Raspberry Pi
 Comming Soon
 
 ## 5. トラブルシューティング
