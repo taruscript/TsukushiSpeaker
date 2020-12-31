@@ -15,8 +15,7 @@ from time import sleep
 host = "localhost"
 port = 10500
 
-
-#　juliusのプロセスが存在するかチェック。
+　juliusのプロセスが存在するかチェック。
 def exist_check_julius():
     process_name = "julius"
 
@@ -26,7 +25,7 @@ def exist_check_julius():
             proc.terminate()
 
 
-def start_process():    
+def start_process():
     subprocess.Popen(["./julius-start.sh"], stdout=subprocess.PIPE, shell=True)
     # Juliusにソケット通信で接続
     sleep(3)
@@ -34,21 +33,13 @@ def start_process():
     client.connect((host, port))
     return client
 
-def recognize_word():
-    recognize=['julius', '-C', './dictation-kit-v4.3.1-linux/am-gmm.jconf','-nostrip','-gram','./dict/greeting','-input', 'mic']
-    try:
-        subprocess.check_call(recognize)
-        print ("Com fin.")
-    except:
-        return "Com envailed."
-
-
 def end_process(client):
     print('finished')
     client.send("DIE".encode('utf-8'))
     client.close()
 
 store_dir_name = "images"
+
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
@@ -78,45 +69,42 @@ def wait_for_OK():
     try:
         client = start_process()
 
-        data = ""
-       
+        data = ""     # initialize data
+        killword = '' # Variable to store the last recognize word
         while True:
             if '</RECOGOUT>\n.' in data:
-                
+
                 recog_text = ""
-                recog = ""
+
                 for line in data.split('\n'):
                     index = line.find('WORD="')
-                    
+
                     if index != -1:
                         line = line[index+6:line.find('"', index+6)]
                         recog_text = recog_text + line
-                        
 
                 print("認識結果: " + recog_text)
-                #if not "猫" == recog_text:
-               
-               # store_image(recog_text)
-                #search_image("検索する物体名")
-               # clean_images()
-                # wake word
+                #murumur wake word
                 if "らずぱい" in recog_text:
                     print("exec")
-                    sleep(2)
-                    #print(recog) 
-                    store_image(recog_text)
-                                   
+                    killword = ("らずぱい" )
+                    print(killword)
+
+                #murmur good's name
+                else:
+                    if killword == ("らずぱい" ):
+                        sleep(1)
+                        print("picture")
+                        store_image(recog_text)
+                        killword = recog_text
 
                 data = ""
-                
-               # store_image(recog_text)
             else:
                 data += str(client.recv(1024).decode('utf-8'))
                 print('NotFound')
     except KeyboardInterrupt:
-       end_process(client)
-
-
+       end_process(client) #Tsukushi end
+    
 if __name__ == "__main__":
     exist_check_julius()
     wait_for_OK()
