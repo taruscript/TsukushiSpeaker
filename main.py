@@ -15,7 +15,7 @@ from time import sleep
 host = "localhost"
 port = 10500
 
-　juliusのプロセスが存在するかチェック。
+#　juliusのプロセスが存在するかチェック。
 def exist_check_julius():
     process_name = "julius"
 
