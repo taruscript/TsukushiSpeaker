@@ -44,7 +44,7 @@ store_dir_name = "images"
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
-        file_name = "{}-{}-{}.jpg".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
+        file_name = "{}-{}-{}".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
         file_name = file_name.replace("[s]","").replace("[/s]","")
         cheese=['fswebcam','-F','80',"{}/{}.jpg".format(store_dir_name, file_name)]
         subprocess.check_call(cheese)#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
