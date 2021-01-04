@@ -79,10 +79,9 @@ wake wordとして「ラズパイ(らずぱい)」と物の名前を言う前に
 ご質問やフィードバックはTwitter @taarusauce または @labo_4423 までお願いします。
 
 ### ・Ubuntu20.10
-・下記のコマンドを実行します。
+・下記のコマンドを実行します。  
 `sudo apt update`  
-`sudo apt upgrade`  
-`sudo apt install vim` または `sudo apt install emacs`  
+`sudo apt upgrade`    
 `sudo apt install julius`  
 `sudo apt install git`  
 `git clone https://github.com/taruscript/TsukushiSpeaker`  
@@ -98,6 +97,8 @@ https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 
 ・pip実行時エラーが出た場合はこのコマンドも実行。
 `sudo apt install python3-pyaudio`
+
+`sudo apt install fswebcam`
 
 ・実行します
 `python3 main.py`
