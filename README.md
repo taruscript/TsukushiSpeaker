@@ -82,23 +82,17 @@ wake wordとして「ラズパイ(らずぱい)」と物の名前を言う前に
 ・下記のコマンドを実行します。  
 `sudo apt update`  
 `sudo apt upgrade`    
-`sudo apt install julius`  
-`sudo apt install git`  
+`sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam`    
 `git clone https://github.com/taruscript/TsukushiSpeaker`  
-`cd TsukushiSpeaker`  
-`sudo apt install python3-pip3`  
-`sudo apt install python3-pyaudio`  
+`cd TsukushiSpeaker`      
 `pip3 install -r requirements.txt`  
 `pip install numpy`  
-`sudo spt install flac`  
 
 <!-- 下記のセットアップしたものをこのディレクトリに配置する。
 https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 
 ・pip実行時エラーが出た場合はこのコマンドも実行。
 `sudo apt install python3-pyaudio`
-
-`sudo apt install fswebcam`
 
 ・実行します
 `python3 main.py`
