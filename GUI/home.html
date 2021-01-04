@@ -20,8 +20,13 @@
             async function search_image(e){
                 e.preventDefault();
                 const word = form.word.value;
-                const result = await eel.search_image(word)();
-                resultdiv.append(result);
+                const image = await eel.export_image(word)();
+                var newImg = document.createElement("img");
+                newImg.src = "data:image/jpeg;base64," + image;
+                while (resultdiv.firstChild) {
+                    resultdiv.removeChild(resultdiv.firstChild);
+                }
+                resultdiv.appendChild(newImg);
             }
             form.addEventListener("submit", search_image);
         </script>
