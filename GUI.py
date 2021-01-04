@@ -9,6 +9,8 @@ def img_to_b64(path):
 @eel.expose
 def export_image(name):
     path = search_image(name)
+    if path == "":
+        return None
     image = img_to_b64(path).decode('utf-8')
     return image
 

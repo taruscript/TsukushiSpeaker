@@ -21,11 +21,15 @@
                 e.preventDefault();
                 const word = form.word.value;
                 const image = await eel.export_image(word)();
-                var newImg = document.createElement("img");
-                newImg.src = "data:image/jpeg;base64," + image;
                 while (resultdiv.firstChild) {
                     resultdiv.removeChild(resultdiv.firstChild);
                 }
+                if(image == null){
+                    resultdiv.append("該当する記録は見つかりませんでした");
+                    return;
+                }
+                var newImg = document.createElement("img");
+                newImg.src = "data:image/jpeg;base64," + image;
                 resultdiv.appendChild(newImg);
             }
             form.addEventListener("submit", search_image);
