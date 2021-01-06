@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript" src="/eel.js"></script>
+    </head>
+    <body>
+        <h1>TsukushiSpeaker</h1>
+        <form id="form">
+            <input type="text" name="word"></input>
+            <button type="submit">検索</button>
+        </form>
+        <button>ログを見る</button>
+        <div id="result"></div>
+        <button>設定</button>
+        <script type="text/javascript">
+            const form = document.getElementById("form");
+            const resultdiv = document.getElementById("result");
+            async function search_image(e){
+                e.preventDefault();
+                const word = form.word.value;
+                const image = await eel.export_image(word)();
+                while (resultdiv.firstChild) {
+                    resultdiv.removeChild(resultdiv.firstChild);
+                }
+                if(image == null){
+                    resultdiv.append("該当する記録は見つかりませんでした");
+                    return;
+                }
+                var newImg = document.createElement("img");
+                newImg.src = "data:image/jpeg;base64," + image;
+                resultdiv.appendChild(newImg);
+            }
+            form.addEventListener("submit", search_image);
+        </script>
+    </body>
+</html>
