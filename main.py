@@ -67,15 +67,6 @@ def clean_images():
     except:
         return False
 
-def show_picture(name):    
-    show1=['cd', 'image']
-    show2
-    try:
-        subprocess.check_call(show)
-        print ("show fin.")
-    except:
-        return "show envailed."
-
 def wait_for_OK():
     try:
         client = start_process()
@@ -102,10 +93,10 @@ def wait_for_OK():
                     killword = ("らずぱい" )            
                     print(killword)
 
-                elif "だいどころ" in recog_text:
-                    print("search")
-                    killword = ("だいどころ" )            
-                    print(killword)
+                #elif "だいどころ" in recog_text:
+                 #   print("search")
+                  #  killword = ("だいどころ" )            
+                   # print(killword)
 
                 #murmur thing's name
                 else:
@@ -115,11 +106,11 @@ def wait_for_OK():
                         store_image(recog_text)
                         killword = recog_text
 
-                    elif killword == ("だいどころ"):
-                        sleep(1)
-                        print("search picture")
+                    #elif killword == ("だいどころ"):
+                     #   sleep(1)
+                      #  print("search picture")
 
-                        killword = recog_text
+                       # killword = recog_text
         
                 data = ""
             else:
