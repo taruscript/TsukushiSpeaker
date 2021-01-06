@@ -15,6 +15,7 @@ from time import sleep
 host = "localhost"
 port = 10500
 
+
 #　juliusのプロセスが存在するかチェック。
 def exist_check_julius():
     process_name = "julius"
@@ -25,7 +26,7 @@ def exist_check_julius():
             proc.terminate()
 
 
-def start_process():
+def start_process():    
     subprocess.Popen(["./julius-start.sh"], stdout=subprocess.PIPE, shell=True)
     # Juliusにソケット通信で接続
     sleep(3)
@@ -43,7 +44,7 @@ store_dir_name = "images"
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
-        file_name = "{}-{}-{}.jpg".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
+        file_name = "{}-{}-{}".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
         file_name = file_name.replace("[s]","").replace("[/s]","")
         cheese=['fswebcam','-F','80',"{}/{}.jpg".format(store_dir_name, file_name)]
         subprocess.check_call(cheese)#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -55,6 +56,7 @@ def search_image(name):
     file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
     if file_list:
         return file_list[-1]
+     
     return ""
 
 def clean_images():
@@ -65,6 +67,15 @@ def clean_images():
     except:
         return False
 
+def show_picture(name):    
+    show1=['cd', 'image']
+    show2
+    try:
+        subprocess.check_call(show)
+        print ("show fin.")
+    except:
+        return "show envailed."
+
 def wait_for_OK():
     try:
         client = start_process()
@@ -73,24 +84,30 @@ def wait_for_OK():
         killword = '' # Variable to store the last recognize word
         while True:
             if '</RECOGOUT>\n.' in data:
-
+                
                 recog_text = ""
-
+                
                 for line in data.split('\n'):
                     index = line.find('WORD="')
-
+                    
                     if index != -1:
                         line = line[index+6:line.find('"', index+6)]
-                        recog_text = recog_text + line
+                        recog_text = recog_text + line                      
 
                 print("認識結果: " + recog_text)
+                
                 #murumur wake word
                 if "らずぱい" in recog_text:
                     print("exec")
-                    killword = ("らずぱい" )
+                    killword = ("らずぱい" )            
                     print(killword)
 
-                #murmur good's name
+                elif "だいどころ" in recog_text:
+                    print("search")
+                    killword = ("だいどころ" )            
+                    print(killword)
+
+                #murmur thing's name
                 else:
                     if killword == ("らずぱい" ):
                         sleep(1)
@@ -98,13 +115,20 @@ def wait_for_OK():
                         store_image(recog_text)
                         killword = recog_text
 
+                    elif killword == ("だいどころ"):
+                        sleep(1)
+                        print("search picture")
+
+                        killword = recog_text
+        
                 data = ""
             else:
                 data += str(client.recv(1024).decode('utf-8'))
                 print('NotFound')
     except KeyboardInterrupt:
        end_process(client) #Tsukushi end
-    
+
+
 if __name__ == "__main__":
     exist_check_julius()
     wait_for_OK()
