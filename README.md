@@ -92,7 +92,6 @@ sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam
 git clone https://github.com/taruscript/TsukushiSpeaker.git
 cd TsukushiSpeaker
 pip3 install -r requirements.txt
-pip3 install numpy
 ```
 
 <!-- 下記のセットアップしたものをこのディレクトリに配置する。
