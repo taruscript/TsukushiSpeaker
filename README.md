@@ -29,14 +29,14 @@
 時間がなくて焦ったり、心に余裕がなくなってしまうことで、自分の生活に脆弱性を作るのはもったいない！！
 
 想定しているユーザーは  
-・ワンルームに住んでいてモノの収納場所を忘れてしまうか方。  
-・モノがたくさんあって収納場所が分からなくなる倉庫を持っている方  
-・忘れものタグや収納場所をメモするのが面倒な方  
+- ワンルームに住んでいてモノの収納場所を忘れてしまう方  
+- モノがたくさんあって収納場所が分からなくなる倉庫を持っている方  
+- 忘れものタグや収納場所をメモするのが面倒な方  
 
 TsukushiSpeakerはそのようななくしものをなくし、日常で慌てる時間を減らしたい。自分の日常に生まれる脆弱性を減らしたい、そのような気持ちから開発しました。  
 
 設置したマイクに向かって声で物の名前を言うと、別に設置したカメラが自動で写真を撮ります。(本当は全方位撮影出来るカメラを使いたかったのですが、プロトタイプなのでお許しください...)  
-またTsukushiを使用するときはネットワークへの接続が不要なので外部に写真が流出する可能性を軽減できます。
+またTsukushiSpeakerを使用するときはネットワークへの接続が不要なので外部に写真が流出する可能性を軽減できます。
 
 ![](https://i.imgur.com/krQmPin.jpg)
 
@@ -81,25 +81,27 @@ https://www.youtube.com/watch?v=DdofA4TyYlo&feature=youtu.be
 ## 4. インストール方法(2020_12_29時点)
 ぜひ皆さんのおうちにも設置してみてください。
 そしてフィードバックお待ちしてます！！
-ご質問やフィードバックはTwitter @taarusauce または @labo_4423 までお願いします。
+ご質問やフィードバックはTwitter [@taarusauce](https://twitter.com/taarusauce) または [@labo_4423](https://twitter.com/labo_4423) までお願いします。
 
 ### ・Ubuntu20.10
 ・下記のコマンドを実行します。  
-`sudo apt update`  
-`sudo apt upgrade`    
-`sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam`    
-`git clone https://github.com/taruscript/TsukushiSpeaker`  
-`cd TsukushiSpeaker`      
-`pip3 install -r requirements.txt`  
-`pip install numpy`  
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam
+git clone https://github.com/taruscript/TsukushiSpeaker.git
+cd TsukushiSpeaker
+pip3 install -r requirements.txt
+pip3 install numpy
+```
 
 <!-- 下記のセットアップしたものをこのディレクトリに配置する。
 https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 
-・pip実行時エラーが出た場合はこのコマンドも実行。
-`sudo apt install python3-pyaudio`
+・pip3コマンド実行時にエラーが出た場合は下記も実行
+`sudo apt install python3-pip`
 
-・実行します
+・TsukushiSpeaker起動
 `python3 main.py`
 
 
@@ -113,6 +115,6 @@ Comming Soon
 ### 
 
 ## 6. 連絡先
-Twitter @taarusauce
+Twitter [@taarusauce](https://twitter.com/taarusauce)
 または
-Twitter @labo_4423
+Twitter [@labo_4423](https://twitter.com/labo_4423)
