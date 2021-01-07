@@ -46,8 +46,8 @@ TsukushiSpeakerはそのようななくしものをなくし、日常で慌て�
 ![](https://i.imgur.com/fZJIyFg.jpg)
 
 
-(注)2021年1月5日現在
-wake wordとして「ラズパイ(らずぱい)」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前で写真が保存されます。
+(注)2021年1月6日現在
+wake wordとして「つくし」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前で写真が保存されます。
 
 ## 2. 仕組み(2020_12_29時点)
 <!-- もっと技術説明を深くした方が良いかな... -->
@@ -58,7 +58,7 @@ wake wordとして「ラズパイ(らずぱい)」と物の名前を言う前に
 https://www.youtube.com/watch?v=DdofA4TyYlo&feature=youtu.be  
 
 `python3 main.py`
-と実行コマンド入力後、wake wordである「ラズパイ(らずぱい)」と話しかけます。
+と実行コマンド入力後、wake wordである「つくし」と話しかけます。
 
 その後、記憶させたい物の名前を話しかけます。
 この場合は「めがね」と話しかけています。
@@ -97,13 +97,16 @@ pip3 install -r requirements.txt
 <!-- 下記のセットアップしたものをこのディレクトリに配置する。
 https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 
-・pip3コマンド実行時にエラーが出た場合は下記も実行
+・pip3コマンド実行時にエラーが出た場合は下記も実行  
 `sudo apt install python3-pip`
 
-・TsukushiSpeaker起動
+・TsukushiSpeaker起動  
 `python3 main.py`  
 別のターミナルで下記のコマンドを実行  
 `python3 GUI.py`  
+その後、ブラウザ（chrome,firefox,edge等）でURL入力欄で
+localhost:8000/home.html  
+と入力すると画像検索ページが現れます。  
 
 ### ・Raspberry Pi
 Comming Soon
