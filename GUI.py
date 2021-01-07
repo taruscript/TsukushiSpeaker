@@ -7,11 +7,18 @@ def img_to_b64(path):
         return base64.b64encode(image.read())
 
 @eel.expose
-def export_image(name):
-    path = search_image(name)
-    if path == "":
+def export_image(word):
+    paths = search_image(word)
+    if not paths:
         return None
-    image = img_to_b64(path).decode('utf-8')
-    return image
+    images = {}
+    for path in paths:
+        unix_time, date, name = path.split("-")
+        name = name.rstrip(".jpg")
+        if not name in images:
+            images[name] = {"date":date, "img":img_to_b64(path).decode('utf-8')}
 
-eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
+    return images
+
+# eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
+eel.start("home.html")

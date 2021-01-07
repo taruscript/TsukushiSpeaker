@@ -20,17 +20,24 @@
             async function search_image(e){
                 e.preventDefault();
                 const word = form.word.value;
-                const image = await eel.export_image(word)();
+                const images = await eel.export_image(word)();
                 while (resultdiv.firstChild) {
                     resultdiv.removeChild(resultdiv.firstChild);
                 }
-                if(image == null){
+                console.log(images);
+                if(images == {}){
                     resultdiv.append("該当する記録は見つかりませんでした");
                     return;
                 }
-                var newImg = document.createElement("img");
-                newImg.src = "data:image/jpeg;base64," + image;
-                resultdiv.appendChild(newImg);
+                for(name in images){
+                    const image = images[name]
+                    var newDiv = document.createElement("div");
+                    var newImg = document.createElement("img");
+                    newImg.src = "data:image/jpeg;base64," + image.img;
+                    newDiv.appendChild(newImg);
+                    newDiv.append(`name: ${name} date: ${image.date}`);
+                    resultdiv.appendChild(newDiv);
+                }
             }
             form.addEventListener("submit", search_image);
         </script>

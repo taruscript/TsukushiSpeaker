@@ -68,8 +68,8 @@ def store_image(name):
 def search_image(name):
     file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
     if file_list:
-        return file_list[-1]
-    return ""
+        return file_list
+    return []
 
 def clean_images():
     try:
