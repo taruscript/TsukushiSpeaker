@@ -88,9 +88,9 @@ def wait_for_OK():
                 print("認識結果: " + recog_text)
                 
                 #murumur wake word
-                if "らずぱい" in recog_text:
+                if "つくし" in recog_text:
                     print("exec")
-                    killword = ("らずぱい" )            
+                    killword = ("つくし" )            
                     print(killword)
 
                 #elif "だいどころ" in recog_text:
@@ -100,7 +100,7 @@ def wait_for_OK():
 
                 #murmur thing's name
                 else:
-                    if killword == ("らずぱい" ):
+                    if killword == ("つくし" ):
                         sleep(1)
                         print("picture")
                         store_image(recog_text)
