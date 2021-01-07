@@ -101,8 +101,9 @@ https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 `sudo apt install python3-pip`
 
 ・TsukushiSpeaker起動
-`python3 main.py`
-
+`python3 main.py`  
+別のターミナルで下記のコマンドを実行  
+`python3 GUI.py`  
 
 ### ・Raspberry Pi
 Comming Soon
