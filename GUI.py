@@ -14,4 +14,4 @@ def export_image(name):
     image = img_to_b64(path).decode('utf-8')
     return image
 
-eel.start("home.html", mode="custom", cmdline_args=['firefox', '-url', 'localhost:8000/home.html'])
+eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
