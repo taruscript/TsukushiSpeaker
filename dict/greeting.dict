@@ -1,23 +1,43 @@
-0	[すまほ]	s u m a h o
-1	[すいっち]	s u i q ch i
-2	[とけい]	t o k e i
-3	[つくえ]	ts u k u e
-4	[ほんだな]	h o N d a n a
-5	[たな]		t a n a
-6	[めがね]	m e g a n e
-7	[めがねいれ]	m e g a n e i r e
-8	[ますく]	m a s u k u
-9	[てぶくろ]	t e b u k u r o
-10	[らずぱい]	r a z u p a i
-11	[かめら]	k a m e r a
-12	[ぱそこん]	p a s o k o N
-13	[さいふ]	s a i f u
-14	[ふでばこ]	f u d e b a k o
-15	[めぐすり]	m e g u s u r i
-16	[くすり]	k u s u r i
-17	[まいくろ]	m a i k u r o
-18	[だいどころ]	d a i d o k o r o
-19	[きっちん]	k i q ch i N
-20	[べっど]	b e q d o
-21	[[s]]	silB
-22	[[/s]]	silE
+0	[つくし]	ts u k u sh i
+1	[すまほ]	s u m a h o
+2	[すいっち]	s u i q ch i
+3	[とけい]	t o k e i
+4	[つくえ]	ts u k u e
+5	[ほんだな]	h o N d a n a
+6	[たな]		t a n a
+7	[めがね]	m e g a n e
+8	[めがねいれ]	m e g a n e i r e
+9	[ますく]	m a s u k u
+10	[てぶくろ]	t e b u k u r o
+11	[らずぱい]	r a z u p a i
+12	[かめら]	k a m e r a
+13	[ぱそこん]	p a s o k o N
+14	[さいふ]	s a i f u
+15	[ふでばこ]	f u d e b a k o
+16	[めぐすり]	m e g u s u r i
+17	[くすり]	k u s u r i
+18	[まいくろ]	m a i k u r o
+19	[だいどころ]	d a i d o k o r o
+20	[きっちん]	k i q ch i N
+21	[べっど]	b e q d o
+22	[めんぼう]	m e N b o u
+23	[りもこん]	r i m o k o N
+24	[しんぶん]	sh i N b u N
+25	[ちらし]	ch i r a sh i
+26	[ばっぐ]	b a q g u
+27	[そふと]	s o f u t o
+28	[はんかち]	h a N k a ch i
+29	[てぬぐい]	t e n u g u i
+30	[うちわ]	u ch i w a
+31	[せんす]	s e N s u
+32	[はんどすぴな]	h a N d o s u p i n a
+33	[めもり]	m o m e r i
+34	[ないふ]	n a i f u
+35	[ほん]		h o N
+36	[もにた]	m o n i t a
+37	[かばん]	k a b a N
+38	[はさみ]	h a s a m i
+39	[たばこ]	t a b a k o
+40	[すいがらいれ]	s u i g a r a i r e
+41	[[s]]	silB
+42	[[/s]]	silE
