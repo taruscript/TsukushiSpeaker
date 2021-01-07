@@ -20,5 +20,4 @@ def export_image(word):
 
     return images
 
-# eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
-eel.start("home.html")
+eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
