@@ -1,4 +1,4 @@
-import eel, base64
+import eel, base64, collections
 from main import search_image
 eel.init("GUI")
 
@@ -6,17 +6,21 @@ def img_to_b64(path):
     with open(path, "rb") as image:
         return base64.b64encode(image.read())
 
-@eel.expose
-def export_image(word):
-    paths = search_image(word)
-    if not paths:
-        return None
-    images = {}
+def format_image_to_dict(paths):
+    images = collections.defaultdict(list)
     for path in paths:
         unix_time, date, name = path.split("-")
         name = name.rstrip(".jpg")
-        if not name in images:
-            images[name] = {"date":date, "img":img_to_b64(path).decode('utf-8')}
+        images[name].append({"date":date, "img":img_to_b64(path).decode('utf-8')})
+    return images
+
+
+@eel.expose
+def export_images(word):
+    paths = search_image(word)
+    if not paths:
+        return None
+    images = format_image_to_dict(paths)
 
     return images
 
