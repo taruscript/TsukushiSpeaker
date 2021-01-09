@@ -24,4 +24,4 @@ def export_images(word):
 
     return images
 
-eel.start("home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])
+eel.start("home/home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home.html'])

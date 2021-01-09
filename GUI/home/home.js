@@ -3,9 +3,9 @@ window.onload = function(){
   const form = document.getElementById("form");
   const resultdiv = document.getElementById("result");
 
-  form.addEventListener("submit", search_image);
+  form.addEventListener("submit", searchImage);
 
-  async function search_image(e){
+  async function searchImage(e){
     e.preventDefault();
     const word = form.word.value;
     const images = await eel.export_images(word)();
