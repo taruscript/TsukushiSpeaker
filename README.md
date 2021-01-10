@@ -46,16 +46,16 @@ TsukushiSpeakerはそのようななくしものをなくし、日常で慌て�
 ![](https://i.imgur.com/fZJIyFg.jpg)
 
 
-(注)2021年1月6日現在
+(注)2021年1月0日現在
 wake wordとして「つくし」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前で写真が保存されます。
 
-## 2. 仕組み(2020_12_29時点)
+## 2. 仕組み(2021_1_10時点)
 <!-- もっと技術説明を深くした方が良いかな... -->
 > Raspberry Piと音声認識Juliusを利用することによって、スマートスピーカーのようにマイクから声を認識し、辞書機能を使って単語を認識します。
 > その認識した時に写真を撮ります。
 > 単語と写真をリンクして保存し、あとから確認できるようにします。
 
-https://www.youtube.com/watch?v=DdofA4TyYlo&feature=youtu.be  
+https://youtu.be/IYfRbMHzDuA  
 
 `python3 main.py`
 と実行コマンド入力後、wake wordである「つくし」と話しかけます。
@@ -72,13 +72,13 @@ https://www.youtube.com/watch?v=DdofA4TyYlo&feature=youtu.be
 またTsukushiは京都大学 河原研究室、及び名古屋工業大学 李研究室で開発された「Juliusディクテーションキット」を利用し、言語モデルは、国立国語研究所の『現代日本語書き言葉均衡コーパス』(BCCWJ)を利用して作成されたものです。  
 
 ## 3. 準備する物
-・コンピュータ(2020_12_29時点ではRaspberry Pi3 ModelB)
+・コンピュータ(2020_1_10時点ではRaspberry Pi3 ModelB or Raspberry Pi4)
 ・Ubuntu OS(version 20.10)
 ・USBマイク
 ・USBカメラ
 ・ラズパイ用ディスプレイ
 
-## 4. インストール方法(2020_12_29時点)
+## 4. インストール方法(2021_1_10時点)
 ぜひ皆さんのおうちにも設置してみてください。
 そしてフィードバックお待ちしてます！！
 ご質問やフィードバックはTwitter [@taarusauce](https://twitter.com/taarusauce) または [@labo_4423](https://twitter.com/labo_4423) までお願いします。
@@ -107,9 +107,6 @@ https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 その後、ブラウザ（chrome,firefox,edge等）でURL入力欄で
 localhost:8000/home.html  
 と入力すると画像検索ページが現れます。  
-
-### ・Raspberry Pi
-Comming Soon
 
 ## 5. トラブルシューティング
 ### 1.マイクを認識しない場合
