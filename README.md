@@ -107,9 +107,6 @@ https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
 localhost:8000/home.html  
 と入力すると画像検索ページが現れます。  
 
-### ・Raspberry Pi
-Comming Soon
-
 ## 5. トラブルシューティング
 ### 1.マイクを認識しない場合
 マイクの優先順位が低い場合があります。
