@@ -115,9 +115,9 @@ must explicitly mention your use of "TsukushiSpeaker".
 
 3-1. The language model included in this Software has been developed
 by using the "Julius Dictation Kit" compiled and owned by Kawahara Lab., 
-Kyoto University and Lee Lab., Nagoya Institute of Technology.  When you
-publish or present any results by using the Software, you must explicitly
-mention this fact.
+Kyoto University and Lee Lab., Nagoya Institute of Technology. Please 
+follow the terms of use of the "Julius Dictation Kit" when presenting 
+your findings using this model.
 
 (Disclaimer of Warranty)
 4. The Licensers make no warranty of any kind and nature, whether
