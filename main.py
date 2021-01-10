@@ -52,22 +52,6 @@ def store_image(name):
     except:
         return False
 
-"""
-def search_image(name):
-    file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
-    if file_list:
-        return file_list[-1]
-     
-    return ""
-
-def clean_images():
-    try:
-        shutil.rmtree("{}".format(store_dir_name))
-        os.makedirs(store_dir_name, exist_ok=True)
-        return True
-    except:
-        return False
-"""        
 
 def wait_for_OK():
     try:
@@ -96,12 +80,6 @@ def wait_for_OK():
                     killword = ("つくし" )            
                     print(killword)
 
-            """
-                elif "" in recog_text:
-                    print("search")
-                    killword = ("" )            
-                    print(killword)
-            """
                 #murmur thing's name
                 else:
                     if killword == ("つくし" ):
@@ -109,14 +87,6 @@ def wait_for_OK():
                         print("picture")
                         store_image(recog_text)
                         killword = recog_text
-
-                    """
-                    elif killword == (""):
-                        sleep(1)
-                        print("search picture")
-
-                        killword = recog_text
-                    """
 
                 data = ""
             else:
