@@ -40,6 +40,21 @@ def end_process(client):
 
 store_dir_name = "images"
 
+def search_image(name):
+    file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
+    if file_list:
+        return file_list[-1]
+     
+    return ""
+
+def clean_images():
+    try:
+        shutil.rmtree("{}".format(store_dir_name))
+        os.makedirs(store_dir_name, exist_ok=True)
+        return True
+    except:
+        return False
+
 def store_image(name):
     try:
         os.makedirs(store_dir_name, exist_ok=True)
