@@ -1,5 +1,5 @@
 import eel, base64, collections
-from main import search_image
+from main import store_image
 eel.init("GUI")
 
 def img_to_b64(path):
