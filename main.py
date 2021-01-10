@@ -2,7 +2,6 @@
 import subprocess
 from subprocess import Popen
 import socket
-import line_notice
 import voice
 import psutil
 import os
