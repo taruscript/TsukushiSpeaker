@@ -71,11 +71,11 @@ https://www.youtube.com/watch?v=DdofA4TyYlo&feature=youtu.be
 またTsukushiは京都大学 河原研究室、及び名古屋工業大学 李研究室で開発された「Juliusディクテーションキット」を利用し、言語モデルは、国立国語研究所の『現代日本語書き言葉均衡コーパス』(BCCWJ)を利用して作成されたものです。  
 
 ## 3. 準備する物
-・コンピュータ(Raspberry Pi3 ModelBを推奨してます)
-・Ubuntu OS(version 20.10)
-・USBマイク
-・USBカメラ
-・ラズパイ用ディスプレイ
+* コンピュータ(Raspberry Pi3 ModelBを推奨してます)
+* Ubuntu OS(version 20.10)
+* USBマイク
+* USBカメラ
+* ラズパイ用ディスプレイ
 
 ## 4. インストール方法
 ぜひ皆さんのおうちにも設置してみてください。
