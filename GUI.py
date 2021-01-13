@@ -1,8 +1,11 @@
 import eel, base64, collections
+import glob
+import conf
 eel.init("GUI")
 
+
 def search_image(name):
-    file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
+    file_list = sorted(glob.glob("{}/*{}.jpg".format(conf.store_dir_name, name)))
     if file_list:
         return file_list
     return []
