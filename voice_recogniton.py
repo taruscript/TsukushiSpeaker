@@ -40,12 +40,6 @@ def end_process(client):
 
 store_dir_name = "images"
 
-def search_image(name):
-    file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
-    if file_list:
-        return file_list
-
-    return []
 
 def clean_images():
     try:

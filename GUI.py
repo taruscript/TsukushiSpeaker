@@ -1,6 +1,11 @@
 import eel, base64, collections
-from voice_recogniton import search_image
 eel.init("GUI")
+
+def search_image(name):
+    file_list = sorted(glob.glob("{}/*{}.jpg".format(store_dir_name, name)))
+    if file_list:
+        return file_list
+    return []
 
 def img_to_b64(path):
     with open(path, "rb") as image:
@@ -26,5 +31,8 @@ def export_images(word):
     images = format_image_to_dict(paths)
 
     return images
+
+
+# eel.get_recog_text()
 
 eel.start("home/home.html", mode="custom", cmdline_args=['xdg-open', 'http://localhost:8000/home/home.html'])
