@@ -8,8 +8,8 @@ import os
 import time
 import datetime
 import shutil
-import glob
 from time import sleep
+import conf
 
 host = "localhost"
 port = 10500
@@ -38,23 +38,20 @@ def end_process(client):
     client.send("DIE".encode('utf-8'))
     client.close()
 
-store_dir_name = "images"
-
-
 def clean_images():
     try:
-        shutil.rmtree("{}".format(store_dir_name))
-        os.makedirs(store_dir_name, exist_ok=True)
+        shutil.rmtree("{}".format(conf.store_dir_name))
+        os.makedirs(conf.store_dir_name, exist_ok=True)
         return True
     except:
         return False
 
 def store_image(name):
     try:
-        os.makedirs(store_dir_name, exist_ok=True)
+        os.makedirs(conf.store_dir_name, exist_ok=True)
         file_name = "{}-{}-{}".format(time.time(), datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"), name)
         file_name = file_name.replace("[s]","").replace("[/s]","")
-        cheese=['fswebcam','-F','80',"{}/{}.jpg".format(store_dir_name, file_name)]
+        cheese=['fswebcam','-F','80',"{}/{}.jpg".format(conf.store_dir_name, file_name)]
         subprocess.check_call(cheese)#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         return True
     except:

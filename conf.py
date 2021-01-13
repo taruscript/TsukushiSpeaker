@@ -1,0 +1,1 @@
+store_dir_name = "images"
