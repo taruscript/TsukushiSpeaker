@@ -9,9 +9,12 @@ def img_to_b64(path):
 def format_image_to_dict(paths):
     images = collections.defaultdict(list)
     for path in paths:
-        unix_time, date, name = path.split("-")
-        name = name.rstrip(".jpg")
-        images[name].append({"date":date, "img":img_to_b64(path).decode('utf-8')})
+        try:
+            unix_time, date, name = path.split("-")
+            name = name.rstrip(".jpg")
+            images[name].append({"date":date, "img":img_to_b64(path).decode('utf-8')})
+        except:
+            print(f"ファイル\"{path}\"は撮影された画像ファイルではありません")
     return images
 
 
