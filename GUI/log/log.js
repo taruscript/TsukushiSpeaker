@@ -13,6 +13,7 @@ window.onload = function(){
 
   async function searchLogs(word){
     const images = await eel.export_images(word)();
+    console.log(images);
     removeAllChild(logs);
     if(images == null){
       logs.append("まだ記録はありません");

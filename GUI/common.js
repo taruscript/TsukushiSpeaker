@@ -1,9 +1,11 @@
 function createImageDiv(image){
   var imageDiv = document.createElement("div");
   var newImg = document.createElement("img");
-  newImg.src = "data:image/jpeg;base64," + image.img;
+  newImg.src = image.img;
   imageDiv.appendChild(newImg);
-  imageDiv.append(`name: ${name} date: ${image.date}`);
+  var infoDiv = document.createElement("div");
+  infoDiv.append(`name: ${name} date: ${image.date}`);
+  imageDiv.appendChild(infoDiv)
   return imageDiv;
 }
 
