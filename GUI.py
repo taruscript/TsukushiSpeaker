@@ -5,7 +5,7 @@ import shutil
 import eel
 
 from main import search_image
-from root import app, IMAGE_URL
+from root import IMAGE_URL, app
 
 
 def format_image_to_dict(paths):
@@ -20,6 +20,7 @@ def format_image_to_dict(paths):
             print(f'ファイル"{path}"は撮影された画像ファイルではありません')
     return images
 
+
 @eel.expose
 def export_images(word):
     paths = search_image(word)
@@ -28,6 +29,7 @@ def export_images(word):
     images = format_image_to_dict(paths)
 
     return images
+
 
 if shutil.which("xdg-open"):
     eel.start(

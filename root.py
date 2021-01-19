@@ -1,5 +1,6 @@
 import eel
 from bottle import Bottle, post, request, static_file
+
 from main import store_dir_name
 
 app = Bottle()
@@ -30,6 +31,7 @@ def send_static(path):
 @app.route("/home")
 def home():
     return static_file("home/home.html", root=STATIC_ROOT)
+
 
 @app.route("/log")
 def log():
