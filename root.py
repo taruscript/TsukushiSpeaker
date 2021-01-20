@@ -1,7 +1,7 @@
 import eel
 from bottle import Bottle, post, request, static_file
 
-from main import store_dir_name
+import conf
 
 app = Bottle()
 eel.init("GUI")
@@ -20,7 +20,7 @@ for route_path, route_params in eel.BOTTLE_ROUTES.items():
 
 @app.route(IMAGE_URL + "<filename>")
 def send_image(filename):
-    return static_file(filename, root=store_dir_name, mimetype="image/jpeg")
+    return static_file(filename, root=conf.store_dir_name, mimetype="image/jpeg")
 
 
 @app.route(STATIC_URL + "<path:path>")
@@ -37,10 +37,11 @@ def home():
 def log():
     return static_file("log/log.html", root=STATIC_ROOT)
 
+
 @app.post("/notify")
 def notify():
     status = request.forms.status
-    text = request.forms.text.replace("[s]","").replace("[/s]","")
+    text = request.forms.text.replace("[s]", "").replace("[/s]", "")
     if status == "started":
         eel.on_start_recognization()
     if status == "recognized":
