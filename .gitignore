@@ -1,3 +1,4 @@
+images/*
 .env
 *.wav
 julius-4.4.2

@@ -1,12 +1,18 @@
-import collections
-import os
-import shutil
+import eel, base64, collections
+import glob
+import conf
+eel.init("GUI")
 
-import eel
 
-from main import search_image
-from root import IMAGE_URL, app
+def search_image(name):
+    file_list = sorted(glob.glob("{}/*{}.jpg".format(conf.store_dir_name, name)))
+    if file_list:
+        return file_list
+    return []
 
+def img_to_b64(path):
+    with open(path, "rb") as image:
+        return base64.b64encode(image.read())
 
 def format_image_to_dict(paths):
     images = collections.defaultdict(list)
@@ -29,7 +35,6 @@ def export_images(word):
     images = format_image_to_dict(paths)
 
     return images
-
 
 if shutil.which("xdg-open"):
     eel.start(
