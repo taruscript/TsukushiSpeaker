@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import requests
 import subprocess
 from subprocess import Popen
 import socket
