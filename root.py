@@ -44,5 +44,7 @@ def notify():
     text = request.forms.text.replace("[s]", "").replace("[/s]", "")
     if status == "started":
         eel.on_start_recognization()
+    if status == "stored":
+        eel.on_stored(text)
     if status == "recognized":
         eel.on_recognized(text)

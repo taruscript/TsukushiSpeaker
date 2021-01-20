@@ -30,7 +30,17 @@ function onStartRecognization(){
   alert("start!");
 }
 
+eel.expose(onStored, "on_stored");
+function onStored(Recognizedtext){
+  alert(Recognizedtext)
+}
+
+
 eel.expose(onRecognized, "on_recognized");
 function onRecognized(Recognizedtext){
-  alert(Recognizedtext);
+  var searchInput = document.getElementById("search");
+  if(!searchInput) return;
+  if(document.activeElement == searchInput){
+    searchInput.value = Recognizedtext;
+  }
 }

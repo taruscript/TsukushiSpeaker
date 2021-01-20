@@ -89,6 +89,7 @@ def wait_for_OK():
                     notify_GUI({"status": "started"})
                     killword = ("つくし" )            
                     print(killword)
+                    notify_GUI({"status": "recognized", "text": recog_text})
 
                 #murmur thing's name
                 else:
@@ -97,7 +98,7 @@ def wait_for_OK():
                         print("picture")
                         store_image(recog_text)
                         killword = recog_text
-                        notify_GUI({"status": "recognized", "text": recog_text})
+                        notify_GUI({"status": "stored", "text": recog_text})
 
                 data = ""
             else:
