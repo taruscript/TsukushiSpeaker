@@ -40,7 +40,7 @@ def log():
 @app.post("/notify")
 def notify():
     status = request.forms.status
-    text = request.forms.text
+    text = request.forms.text.replace("[s]","").replace("[/s]","")
     if status == "started":
         eel.on_start_recognization()
     if status == "recognized":
