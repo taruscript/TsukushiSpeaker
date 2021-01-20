@@ -24,3 +24,13 @@ function removeAllChild(parents){
     parents.removeChild(parents.firstChild);
   }
 }
+
+eel.expose(onStartRecognization, "on_start_recognization");
+function onStartRecognization(){
+  alert("start!");
+}
+
+eel.expose(onRecognized, "on_recognized");
+function onRecognized(Recognizedtext){
+  alert(Recognizedtext);
+}

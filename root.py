@@ -36,3 +36,12 @@ def home():
 @app.route("/log")
 def log():
     return static_file("log/log.html", root=STATIC_ROOT)
+
+@app.post("/notify")
+def notify():
+    status = request.forms.status
+    text = request.forms.text
+    if status == "started":
+        eel.on_start_recognization()
+    if status == "recognized":
+        eel.on_recognized(text)

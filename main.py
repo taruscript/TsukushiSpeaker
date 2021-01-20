@@ -66,6 +66,9 @@ def store_image(name):
     except:
         return False
 
+def notify_GUI(data):
+    requests.post("http://localhost:8000/notify", data)
+
 
 def wait_for_OK():
     try:
@@ -91,6 +94,7 @@ def wait_for_OK():
                 #murumur wake word
                 if "つくし" in recog_text:
                     print("exec")
+                    notify_GUI({"status": "started"})
                     killword = ("つくし" )            
                     print(killword)
 
@@ -101,6 +105,7 @@ def wait_for_OK():
                         print("picture")
                         store_image(recog_text)
                         killword = recog_text
+                        notify_GUI({"status": "recognized", "text": recog_text})
 
                 data = ""
             else:
