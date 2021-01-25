@@ -1,3 +1,5 @@
+<!--- sechack 20210125 --->
+
 
 # TsukushiSpeaker
 家の中でのなくしものをなくすための便利な道具、TsukushiSpeaker。
@@ -5,10 +7,11 @@
 ### 目次
 1. TsukushiSpeakerとは
 2. 仕組み
+・登録時
+・検索時
+・参考
 3. 準備する物
 4. インストール方法
-・Raspberry Pi4
-・Raspberry Pi3 ModelB
 5. トラブルシューティング
 6. 連絡先
 7. なぜ"Tsukushi"なのか
@@ -23,13 +26,16 @@
 
 想定しているユーザーは  
 - ワンルームに住んでいてモノの収納場所を忘れてしまう方  
-- モノがたくさんあって収納場所が分からなくなる倉庫を持っている方  
-- 忘れものタグや収納場所をメモするのが面倒な方  
+- モノがたくさんあって収納場所が分からなくなるような倉庫を持っている方  
+- 忘れものタグや収納場所をメモするのが面倒な方
+- モノの場所を書いたメモをなくしてしまう方
+- 忘れものタグなどではプライバシーが気になる方  
 
-TsukushiSpeakerはそのようななくしものをなくし、日常で慌てる時間を減らしたい。自分の日常に生まれる脆弱性を減らしたい、そのような気持ちから開発しました。  
+TsukushiSpeakerはそのようななくしものをなくし、日常で慌てる時間を減らしたい。自分の日常に生まれる脆弱性を減らしたい、そのような気持ちから開発しました。
 
-設置したマイクに向かって声で物の名前を言うと、別に設置したカメラが自動で写真を撮ります。(本当は全方位撮影出来るカメラを使いたかったのですが、プロトタイプなのでお許しください...)  
-またTsukushiSpeakerを使用するときはネットワークへの接続が不要なので外部に写真が流出する可能性を軽減できます。
+
+設置したマイクに向かって声で物の名前を言うと、別の場所に設置したカメラが自動で写真を撮ります。
+(デモも本当は全方位撮影出来るカメラを使いたかったのですが、プロトタイプなのでお許しください...) 
 
 ![](https://i.imgur.com/krQmPin.jpg)
 
@@ -38,42 +44,45 @@ TsukushiSpeakerはそのようななくしものをなくし、日常で慌て�
 
 ![](https://i.imgur.com/fZJIyFg.jpg)
 
-(注)2021年1月16日現在
-wake wordとして「つくし」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前で写真が保存されます。
+「やっぱり自分の"もの"の情報が流出したりしたら怖いなぁ...」
+TsukushiSpeakerはセキュリティ面についても考えました。TsukushiSpeakerを使用する時はネットワークへの接続が不要なので外部に写真が流出する心配をする必要はありません！
 
-## 2. 仕組み(2021_1_16時点)
-wake wordとして「つくし」と物の名前を言う前に言い、起動させます。その後物の名前を言う事で、物の名前で写真が保存されます。
+## 2. 仕組み
 
-> Raspberry Piと音声認識Juliusを利用することによって、スマートスピーカーのようにマイクから声を認識し、辞書機能を使って単語を認識します。
-> その認識した時に写真を撮ります。
-> 単語と写真をリンクして保存し、あとから確認できるようにします。
+### 登録時
 
-参考：使用動画
+`python3 voice_recognition.py`
+と実行コマンド入力後、wake wordである「つくし」と話しかけます。
+wake wordとして「つくし」と言うことで、TsukushiSpeakerを起動させます。
+認識し起動すると音が鳴ります。
+
+次に覚えさせたいモノの名前を言いながら置きます。
+(参考動画では「メガネ」と言っています)
+モノの名前を認識すると別の音が鳴り、モノを置いている時に写真を撮ります。
+その写真はモノの名前、日時と紐づけて保存されます。
+GUIにJuliusディクテーションキットで認識した結果を共有し、ディスプレイに登録したモノの名前が通知されます。
+
+TsukushiSpeakerではネットワーク接続をせずに使えるようにするため、用意した環境で音声認識ができるようになっています。音声認識Juliusディクテーションキットを利用することによってスマートスピーカーのような音声認識を実現させました。マイクからの音声をJuliusディクテーションキットの辞書機能を使うことによって単語認識させています。
+
+> Tsukushiは京都大学 河原研究室、及び名古屋工業大学 李研究室で開発された「Juliusディクテーションキット」を利用し、言語モデルは、国立国語研究所の『現代日本語書き言葉均衡コーパス』(BCCWJ)を利用して作成されたものです。  
+
+### 検索時
+ディスプレイのタッチパネルなどを使い、検索したいモノの名前を入力します。
+ヒットすると、検索したモノの名前を撮影した時の写真が表示されます。
+(参考動画ではカメラが古く、画質は荒いです)
+
+### 参考
 https://youtu.be/IYfRbMHzDuA  
 
-`python3 main.py`
-と実行コマンド入力後、wake wordである「つくし」と話しかけます。
-
-その後、記憶させたい物の名前を話しかけます。
-この場合は「めがね」と話しかけています。
-
-そうすると、画像が保存されます。
-「眼鏡」が認識され、日時と物の名前の入ったファイル名となり保存されます。
-
-そのファイルを開くと、眼鏡の置いてある場所が表示されます。
-(カメラが古く、画質は荒いです)
-
-またTsukushiは京都大学 河原研究室、及び名古屋工業大学 李研究室で開発された「Juliusディクテーションキット」を利用し、言語モデルは、国立国語研究所の『現代日本語書き言葉均衡コーパス』(BCCWJ)を利用して作成されたものです。  
-
 ## 3. 準備する物
-* Raspberry Pi4
-(Raspberry Pi3 ModelBの場合はUbuntu OS version 20.10をインストール)
+* Raspberry Pi4(推奨)
 * USBマイク
 * USBカメラ
+* スピーカー
 * Raspberry Pi用ディスプレイ
 
-## 4. インストール方法(2021_1_16時点)
-Raspberry Pi4の場合、Raspberry Pi3 ModelBの場合の2通りを説明します。
+## 4. インストール方法
+Raspberry Pi4を利用したインストール方法を説明します。
 
 ぜひ皆さんのおうちにも設置してみてください。
 そしてフィードバックお待ちしてます！！
@@ -116,33 +125,7 @@ sudo apt install python3-pyaudio flac fswebcam
 pip3 install -r requirements.txt
 ```
 * TsukushiSpeaker起動  
-`python3 main.py`  
-別のターミナルで下記のコマンドを実行  
-`python3 GUI.py`  
-その後、ブラウザ（chrome,firefox,edge等）でURL入力欄で
-localhost:8000/home.html  
-と入力すると画像検索ページが現れます。  
-
-### ・Raspberry Pi3 ModelB
-Ubuntu20.10を起動させます。
-下記のコマンドを実行します。  
-```bash
-sudo apt update
-sudo apt upgrade
-sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam
-git clone https://github.com/taruscript/TsukushiSpeaker.git
-cd TsukushiSpeaker
-pip3 install -r requirements.txt
-```
-
-<!-- 下記のセットアップしたものをこのディレクトリに配置する。
-https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
-
-* pip3コマンド実行時にエラーが出た場合は下記も実行  
-`sudo apt install python3-pip`
-
-* TsukushiSpeaker起動  
-`python3 main.py`  
+`python3 voice_recognition.py`  
 別のターミナルで下記のコマンドを実行  
 `python3 GUI.py`  
 その後、ブラウザ（chrome,firefox,edge等）でURL入力欄で
@@ -177,11 +160,41 @@ sudo sh -c "echo snd-pcm >> /etc/modules"
 sudo reboot
 ```
 
-### 3. 他のOSなどで失敗する場合
-* Raspberry Pi3 ModelBの場合はRasbianでは失敗することが確認されています。
-Ubuntu20.10をインストールしてください。
+### 3. Raspberry Pi3 ModelBを利用したい場合
+Raspberry Pi4と同じようにインストールしてみてください。
+Raspberry Pi4よりも非常に動作が重くなりますが、利用可能です。
 
-* VMでのUbuntu, Mac OSも失敗することが確認されています。
+### 4. Ubuntuの場合
+
+Ubuntu20.10でも使う事ができます。
+VMだとマイク設定をしないといけなかったりと、環境にも依るのでご自分の判断でご利用ください。
+
+Ubuntu20.10を起動させます。
+下記のコマンドを実行します。  
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install -y julius git python3-pip python3-pyaudio flac fswebcam
+git clone https://github.com/taruscript/TsukushiSpeaker.git
+cd TsukushiSpeaker
+pip3 install -r requirements.txt
+```
+
+<!-- 下記のセットアップしたものをこのディレクトリに配置する。
+https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322 -->
+
+* pip3コマンド実行時にエラーが出た場合は下記も実行  
+`sudo apt install python3-pip`
+
+* TsukushiSpeaker起動  
+`python3 voice_recognition.py`  
+別のターミナルで下記のコマンドを実行  
+`python3 GUI.py`  
+その後、ブラウザ（chrome,firefox,edge等）でURL入力欄で
+localhost:8000/home.html  
+と入力すると画像検索ページが現れます。  
+
+さらに、他のLinuxディストリビュージョンでも動作が可能です。その場合は各パッケージに置き換えるなどご自身で対応をお願いします！
 
 ## 6. 連絡先
 Twitter [@taarusauce](https://twitter.com/taarusauce)
