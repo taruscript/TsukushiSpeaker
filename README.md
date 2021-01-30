@@ -71,8 +71,8 @@ TsukushiSpeakerではネットワーク接続をせずに使えるようにす�
 ヒットすると、検索したモノの名前を撮影した時の写真が表示されます。
 (参考動画ではカメラが古く、画質は荒いです)
 
-### 参考
-https://youtu.be/IYfRbMHzDuA  
+### 参考  
+https://youtu.be/8j_uSsFOT0U  
 
 ## 3. 準備する物
 * Raspberry Pi4(推奨)
