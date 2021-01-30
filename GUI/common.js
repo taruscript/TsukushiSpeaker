@@ -27,7 +27,7 @@ function removeAllChild(parents){
 
 eel.expose(onStartRecognization, "on_start_recognization");
 function onStartRecognization(){
-  /alert("start!");
+  //alert("start!");
 }
 
 eel.expose(onRecognized, "on_recognized");
