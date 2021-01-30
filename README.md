@@ -51,7 +51,13 @@ TsukushiSpeakerはセキュリティ面についても考えました。Tsukushi
 
 ### 登録時
 
+ターミナルを立ち上げて、
+`cd TsukushiSpeaker`
+と入力して
 `python3 voice_recognition.py`
+、別のターミナルを立ち上げて
+`cd TsukushiSpeaker`  
+`python3 GUI.py`
 と実行コマンド入力後、wake wordである「つくし」と話しかけます。
 wake wordとして「つくし」と言うことで、TsukushiSpeakerを起動させます。
 認識し起動すると音が鳴ります。
@@ -92,8 +98,8 @@ Raspberry Pi4を利用したインストール方法を説明します。
 Raspberry Pi OS version 5.4を使用。
 下記のコマンドを実行します。
 ```
-mkdir julius
-cd julius
+git clone https://github.com/taruscript/TsukushiSpeaker.git
+cd TsukushiSpeaker
 wget https://github.com/julius-speech/julius/archive/v4.4.2.1.tar.gz
 tar xvzf v4.4.2.1.tar.gz
 cd julius-4.4.2.1
@@ -106,22 +112,18 @@ mkdir julius-kit
 cd julius-kit
 wget https://osdn.net/dl/julius/dictation-kit-v4.4.zip
 unzip dictation-kit-v4.4.zip
-
+```
+これで話しかけた言葉を認識できる状態になります。  
+以下のコマンドを実行することでjuliusの利用テストができます。
+```
 cd ~/julius/julius-kit/dicration-kit-v4.4/
 julius -C main.jconf -C am-gmm.jconf -demo
 ```
-これで話しかけた言葉を認識できる状態になります。
-ディレクトリ"julius"の中で以下のコマンドを実行します。
+ここからは撮影できるように準備をします
 ```
-git clone https://github.com/taruscript/TsukushiSpeaker.git
+cd 
 cd TsukushiSpeaker
-vim julius-start.sh
-```
-そしてjulius-start.shの中身を以下に変更します。
-`julius -C ./julius-kit/dictation-kit-v4.4/am-gmm.jconf -nostrip -gram ./dict/greeting -input mic -module > /dev/null`
-保存しターミナルに戻り以下のコマンドを実行します。
-```
-sudo apt install python3-pyaudio flac fswebcam
+sudo apt install python3-pyaudio flac fswebcam 
 pip3 install -r requirements.txt
 ```
 * TsukushiSpeaker起動  
